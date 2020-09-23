@@ -3,7 +3,7 @@ import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 export interface Entry {
   id: string
   amount: number,  
-  createdAt: Date
+  createdAt: string
 }
 
 const entryAdapter = createEntityAdapter<Entry>()

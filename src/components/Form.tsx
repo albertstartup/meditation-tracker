@@ -9,7 +9,7 @@ const generateEntry = (amount: number) => {
   return {
     id: nanoid(),
     amount,
-    createdAt: now,
+    createdAt: JSON.stringify(now),
   };
 };
 
