@@ -1,23 +1,24 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import nanoid from "nanoid";
-import { Entry } from "../../types";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+
+export interface Entry {
+  id: string
+  amount: number,  
+  createdAt: Date
+}
+
+const entryAdapter = createEntityAdapter<Entry>()
 
 const entriesSlice = createSlice({
   name: "entries",
-  initialState: [] as Entry[],
+  initialState: entryAdapter.getInitialState(),
   reducers: {
-    addEntry: {
-      reducer: (state, action: PayloadAction<Entry>) => {
-        state.push(action.payload)
-      },
-      prepare: (amount: number) => {
-        const id = nanoid()
-        return { payload: { amount, id , createdAt: new Date()}}
-      }
-    },
+    addEntry: entryAdapter.addOne,
+    removeEntry: entryAdapter.removeOne
   },
 });
 
-export const { addEntry } = entriesSlice.actions;
+export const { addEntry, removeEntry } = entriesSlice.actions;
+
+export const { selectAll } = entryAdapter.getSelectors()
 
 export default entriesSlice.reducer;

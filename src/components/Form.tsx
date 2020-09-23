@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import { addEntry } from "../features/entries/entriesSlice";
-import { Entry } from "../types";
+import { Entry } from "../features/entries/entriesSlice";
 import { useDispatch } from "react-redux";
+import nanoid from "nanoid";
+
+const generateEntry = (amount: number) => {
+  const now = new Date();
+  return {
+    id: nanoid(),
+    amount,
+    createdAt: now,
+  };
+};
 
 const Form: React.FC = () => {
   const dispatch = useDispatch();
@@ -9,7 +19,7 @@ const Form: React.FC = () => {
   const [amount, setAmount] = useState(0);
 
   const now = new Date();
-  const [time, setTime] = useState(now.getHours() + ":" + now.getMinutes())
+  const [time, setTime] = useState(now.getHours() + ":" + now.getMinutes());
 
   return (
     <form>
@@ -35,7 +45,7 @@ const Form: React.FC = () => {
       <button
         onClick={(e) => {
           e.preventDefault();
-          dispatch(addEntry(amount));
+          dispatch(addEntry(generateEntry(amount)));
         }}
       >
         Add
