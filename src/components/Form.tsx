@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { addEntry } from "../features/entries/entriesSlice";
-import { Entry } from "../features/entries/entriesSlice";
+import { actions } from "../features/entries/entriesSlice";
 import { useDispatch } from "react-redux";
 import nanoid from "nanoid";
 
@@ -45,7 +44,7 @@ const Form: React.FC = () => {
       <button
         onClick={(e) => {
           e.preventDefault();
-          dispatch(addEntry(generateEntry(amount)));
+          dispatch(actions.addEntry(generateEntry(amount)));
         }}
       >
         Add

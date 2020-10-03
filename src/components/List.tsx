@@ -2,13 +2,14 @@ import { createSelector } from "@reduxjs/toolkit";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../app/rootReducer";
-import { selectAll, removeEntry } from "../features/entries/entriesSlice";
+import { selectors, actions } from "../features/entries/entriesSlice";
+
+const entriesSelector = createSelector(
+  (state: RootState) => state.entries,
+  selectors.selectAll
+);
 
 const List = () => {
-  const entriesSelector = createSelector(
-    (state: RootState) => state.entries,
-    selectAll
-  );
   const entries = useSelector(entriesSelector);
 
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const List = () => {
             <h1>Amount: {entry.amount}</h1>
             <button
               onClick={() => {
-                dispatch(removeEntry(entry.id));
+                dispatch(actions.removeEntry(entry.id));
               }}
             >
               X

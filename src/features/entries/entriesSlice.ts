@@ -17,8 +17,8 @@ const entriesSlice = createSlice({
   },
 });
 
-export const { addEntry, removeEntry } = entriesSlice.actions;
+export const actions = entriesSlice.actions;
 
-export const { selectAll } = entryAdapter.getSelectors()
+export const selectors = entryAdapter.getSelectors()
 
 export default entriesSlice.reducer;
