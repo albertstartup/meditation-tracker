@@ -4,20 +4,17 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
-  key: "root",
+  key: "meditation-tracker-root-test",
   storage,
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const customizedMiddleware = getDefaultMiddleware({
-  // redux-persist causes console error because it stores unserializable values
-  serializableCheck: false,
-});
-
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: customizedMiddleware,
+  middleware: getDefaultMiddleware({
+    serializableCheck: false
+  })
 });
 
 export const persistor = persistStore(store);
