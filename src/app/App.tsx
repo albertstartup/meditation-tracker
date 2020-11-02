@@ -1,12 +1,14 @@
 import React from "react";
-import Form from "../components/Form";
-import List from "../components/List"
+import AddEntry from "../components/AddEntry";
+import List from "../components/List";
 
 function App() {
-  return <main>
-    <Form/>
-    <List/>
-  </main>;
+  return (
+    <main>
+      <AddEntry />
+      <List />
+    </main>
+  );
 }
 
 export default App;

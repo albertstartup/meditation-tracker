@@ -12,7 +12,7 @@ const generateEntry = (amount: number) => {
   };
 };
 
-const Form: React.FC = () => {
+const AddEntry: React.FC = () => {
   const dispatch = useDispatch();
 
   const [amount, setAmount] = useState(0);
@@ -53,4 +53,4 @@ const Form: React.FC = () => {
   );
 };
 
-export default Form;
+export default AddEntry;
