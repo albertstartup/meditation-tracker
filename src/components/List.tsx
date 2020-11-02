@@ -12,22 +12,25 @@ const List = () => {
   const dispatch = useDispatch();
 
   return (
-    <ol>
-      {entries.map((entry) => {
-        return (
-          <>
-            <h1>Amount: {entry.amount}</h1>
-            <button
-              onClick={() => {
-                dispatch(actions.removeEntry(entry.id));
-              }}
-            >
-              X
-            </button>
-          </>
-        );
-      })}
-    </ol>
+    <>
+      <ol>
+        {entries.map((entry) => {
+          return (
+            <>
+              <h1>Amount: {entry.amount}</h1>
+              <button
+                onClick={() => {
+                  dispatch(actions.removeEntry(entry.id));
+                }}
+              >
+                X
+              </button>
+            </>
+          );
+        })}
+      </ol>
+      <Chart/>
+    </>
   );
 };
 
