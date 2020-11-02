@@ -2,15 +2,12 @@ import { createSelector } from "@reduxjs/toolkit";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../app/rootReducer";
-import { selectors, actions } from "../features/entries/entriesSlice";
+import { selectors as entriesSelector, actions } from "../features/entries/entriesSlice";
+import Chart from "./Chart";
 
-const entriesSelector = createSelector(
-  (state: RootState) => state.entries,
-  selectors.selectAll
-);
 
 const List = () => {
-  const entries = useSelector(entriesSelector);
+  const entries = useSelector(entriesSelector.selectAll);
 
   const dispatch = useDispatch();
 
